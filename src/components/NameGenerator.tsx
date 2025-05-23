@@ -210,7 +210,6 @@ export default function NameGenerator() {
     );
   }
 
-  // Final result / loading / error
   return (
     <Stack spacing={2} alignItems="center" sx={{ p: 4 }}>
       <Typography variant="h4" fontFamily="fantasy">
