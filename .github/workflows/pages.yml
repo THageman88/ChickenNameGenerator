@@ -38,6 +38,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+      - name: Debug secret length
+        run: echo "VITE_OPENAI_API_KEY length = ${#VITE_OPENAI_API_KEY}"
 
   deploy:
     needs: build-and-deploy
