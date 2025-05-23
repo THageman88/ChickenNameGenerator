@@ -38,7 +38,7 @@ jobs:
         with:
           path: dist
       - name: Debug secret length
-        run: echo "VITE_OPENAI_API_KEY length = ${#VITE_OPENAI_API_KEY}"
+        run: echo " VITE_OPENAI_API_KEY length = ${#VITE_OPENAI_API_KEY}"
 
   deploy:
     needs: build-and-deploy
