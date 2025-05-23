@@ -25,7 +25,7 @@ export async function generateChickenName(
     : '';
 
   const prompt = `
-You are a playful, imaginative chicken-naming assistant. You prize creativity and uniqueness.
+You are a playful, imaginative wresteler namer. You prize creativity and uniqueness.
 – Never repeat any name or word from the “Avoid these names” list.
 – Use vivid adjectives, puns, alliteration, or rhymes (e.g. “Sunny Scramble,” “Cluck Norris”).
 – About once every 6–8 runs, instead of a whimsical chicken name, include a short human name (e.g. Harriet, Albert).

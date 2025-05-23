@@ -22,7 +22,7 @@ export default function QuestionPage({
   onBack,                          
 }: QuestionPageProps) {
   return (
-    <Stack spacing={2} alignItems="center" sx={{ p: 4 }}>
+    <Stack spacing={2} alignItems="center" sx={{ p: 4, maxWidth: 360  }}>
       <Typography variant="h4" fontFamily="fantasy">
         Chicken Name Generator
       </Typography>
