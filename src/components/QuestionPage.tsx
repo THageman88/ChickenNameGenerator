@@ -22,7 +22,7 @@ export default function QuestionPage({
   onBack,                          
 }: QuestionPageProps) {
   return (
-    <Stack spacing={2} alignItems="center" sx={{ p: 4, maxWidth: 360  }}>
+    <Stack spacing={2} alignItems="center" sx={{ p: 4 }}>
       <Typography variant="h4" fontFamily="fantasy">
         Chicken Name Generator
       </Typography>
@@ -30,6 +30,7 @@ export default function QuestionPage({
         component="img"
         src={imageSrc}
         rel="preload"
+        loading ="lazy"
         alt={question}
         sx={{ width: 200, height: 200, objectFit: 'cover',   border: '8px solid #8B4513',
   borderRadius: '6px',

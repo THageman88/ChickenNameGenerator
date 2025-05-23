@@ -197,8 +197,8 @@ export default function NameGenerator() {
         onBack={handleBack}
       >
         <FormControl sx={{ minWidth: 200 }}>
-          <InputLabel>{label}</InputLabel>
-          <Select value={currentValue} label={label} onChange={onChange}>
+          <InputLabel sx={{color:'inherit'}}>{label}</InputLabel>
+          <Select value={currentValue} label={label}  onChange={onChange}>
             {options.map(opt => (
               <MenuItem key={opt} value={opt}>
                 {opt}
