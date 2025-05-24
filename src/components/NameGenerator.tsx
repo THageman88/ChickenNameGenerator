@@ -139,7 +139,6 @@ export default function NameGenerator() {
     setError(null);
   };
 
-  // Welcome screen
   if (step === 0) {
     return (
       <Stack spacing={2} alignItems="center" sx={{ p: 4 }}>
@@ -166,7 +165,6 @@ export default function NameGenerator() {
     );
   }
 
-  // Questionnaire pages
   if (step > 0 && step <= questionData.length) {
     const { label, options } = questionData[step - 1];
     const currentValue =
@@ -196,7 +194,7 @@ export default function NameGenerator() {
         onNext={handleNext}
         onBack={handleBack}
       >
-        <FormControl sx={{ minWidth: 200 }}>
+        <FormControl>
           <InputLabel>{label}</InputLabel>
           <Select value={currentValue} label={label} onChange={onChange}>
             {options.map(opt => (
