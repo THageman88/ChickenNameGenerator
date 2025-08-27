@@ -5,17 +5,17 @@ on:
     branches:
       - main
 
-env:
-  VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
-
 permissions:
   contents: read
-  pages:   write
+  pages: write
   id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,8 +24,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+
       - name: Install dependencies
         run: npm ci
+      - name: Check VITE_OPENAI_API_KEY presence
+        run: |
+          if [ -z "$VITE_OPENAI_API_KEY" ]; then
+            echo "VITE_OPENAI_API_KEY is missing"; exit 1;
+          else
+            echo "VITE_OPENAI_API_KEY is set";
+          fi
 
       - name: Build production bundle
         run: npm run build
@@ -37,18 +45,16 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-      - name: Debug secret length
-        run: echo " VITE_OPENAI_API_KEY length = ${#VITE_OPENAI_API_KEY}"
 
   deploy:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     permissions:
-      pages:   write
+      pages: write
       id-token: write
     environment:
       name: main
-      url:  ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
