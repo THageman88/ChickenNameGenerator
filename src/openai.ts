@@ -16,13 +16,9 @@ export async function generateChickenName(
   inputs: ChatInput[],
   history: string[]
 ): Promise<string> {
-  if (!API_KEY) {
-    throw new Error(
-      'Missing VITE_OPENAI_API_KEY at build time. Ensure the GitHub Actions build step passes the secret.'
-    );
-  }
-
-  const inputText = inputs.map(i => `${i.label}: ${i.value}`).join('\n');
+  const inputText = inputs
+    .map(i => `${i.label}: ${i.value}`)
+    .join('\n');
 
   const historyText = history.length
     ? `Avoid these names: ${history.join(', ')}\n\n`
@@ -52,17 +48,7 @@ ${inputText}
     }),
   });
 
-  if (!res.ok) {
-    let msg = `${res.status} ${res.statusText}`;
-    try {
-      const e = await res.json();
-      msg = e?.error?.message ? `${msg} - ${e.error.message}` : msg;
-    } catch {
-      /* ignore JSON parse errors */
-    }
-    throw new Error(msg);
-  }
-
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
   const data = (await res.json()) as ChatResponse;
   return data.choices[0].message.content.trim();
 }
