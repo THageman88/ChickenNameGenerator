@@ -194,9 +194,9 @@ export default function NameGenerator() {
         onNext={handleNext}
         onBack={handleBack}
       >
-        <FormControl>
-          <InputLabel>{label}</InputLabel>
-          <Select value={currentValue} label={label} onChange={onChange}>
+        <FormControl sx={{ minWidth: 200 }}>
+          <InputLabel sx={{color:'inherit'}}>{label}</InputLabel>
+          <Select value={currentValue} label={label}  onChange={onChange}>
             {options.map(opt => (
               <MenuItem key={opt} value={opt}>
                 {opt}
@@ -208,7 +208,6 @@ export default function NameGenerator() {
     );
   }
 
-  // Final result / loading / error
   return (
     <Stack spacing={2} alignItems="center" sx={{ p: 4 }}>
       <Typography variant="h4" fontFamily="fantasy">

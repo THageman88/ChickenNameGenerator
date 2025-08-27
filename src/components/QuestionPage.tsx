@@ -29,6 +29,8 @@ export default function QuestionPage({
       <Box
         component="img"
         src={imageSrc}
+        rel="preload"
+        loading ='lazy'
         alt={question}
         sx={{ width: 200, height: 200, objectFit: 'cover',   border: '8px solid #8B4513',
   borderRadius: '6px',
